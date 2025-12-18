@@ -12,6 +12,8 @@ namespace MountAndBlade2D.Character
         [Header("Offense")]
         public float baseDamage = 10f;
         public float attackSpeed = 1f;
+        public DamageType damageType = DamageType.Slash;
+        public DamageProfile damageProfile;
 
         [Header("Defense")]
         public float armor = 0f;
@@ -24,6 +26,16 @@ namespace MountAndBlade2D.Character
         {
             var mitigation = 1f - Mathf.Clamp01(armor / (armor + 100f));
             return incomingDamage * mitigation;
+        }
+
+        public float EvaluateDamage(float baseValue)
+        {
+            if (damageProfile == null)
+            {
+                return baseValue;
+            }
+
+            return damageProfile.Evaluate(damageType, baseValue);
         }
     }
 }

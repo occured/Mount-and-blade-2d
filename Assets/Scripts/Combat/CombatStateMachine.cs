@@ -20,6 +20,8 @@ namespace MountAndBlade2D.Combat
         [SerializeField] private float activeDuration = 0.15f;
         [SerializeField] private float recoverDuration = 0.3f;
         [SerializeField] private float cooldownDuration = 0.25f;
+        [SerializeField] private float staminaCost = 10f;
+        [SerializeField] private Character.StaminaComponent stamina;
 
         private CombatState _state = CombatState.Idle;
         private float _timer;
@@ -43,6 +45,11 @@ namespace MountAndBlade2D.Combat
         public void StartAttack()
         {
             if (_state != CombatState.Idle)
+            {
+                return;
+            }
+
+            if (stamina != null && !stamina.TrySpend(staminaCost))
             {
                 return;
             }

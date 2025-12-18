@@ -1,4 +1,5 @@
 using UnityEngine;
+using MountAndBlade2D.Character;
 
 namespace MountAndBlade2D.Combat
 {
@@ -10,6 +11,8 @@ namespace MountAndBlade2D.Combat
         [SerializeField] private LayerMask hitboxMask;
         [SerializeField] private LayerMask hurtboxMask;
         [SerializeField] private float baseDamage = 10f;
+        [SerializeField] private DamageType damageType = DamageType.Slash;
+        [SerializeField] private DamageProfile damageProfile;
 
         public void Resolve(Collider2D collider)
         {
@@ -18,7 +21,10 @@ namespace MountAndBlade2D.Combat
                 var health = collider.GetComponent<IHealth>();
                 if (health != null)
                 {
-                    health.TakeDamage(baseDamage);
+                    var damage = damageProfile != null
+                        ? damageProfile.Evaluate(damageType, baseDamage)
+                        : baseDamage;
+                    health.TakeDamage(damage);
                 }
             }
         }

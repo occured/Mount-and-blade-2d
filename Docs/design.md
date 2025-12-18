@@ -17,10 +17,11 @@
 - **CharacterStats**: Encapsulates health, stamina, armor, damage, and a `DamageProfile` (slash/pierce/blunt).
 - **PartyRoster**: List of units with wages, morale, and formation role (frontline/ranged/cavalry-equivalent).
 - **MoraleSystem**: Derived from recent victories, wages paid, food status, and leadership perks.
+- **StaminaComponent**: Spends stamina on attacks/blocks/sprints and regenerates over time; exhausted window prevents spending.
 
 ### Combat
 - **CombatStateMachine**: Handles states: Idle → Windup → Active → Recover → Cooldown. Supports queued feints and chamber blocks.
-- **HitResolver**: Resolves overlap events between `Hitbox` and `Hurtbox` layers; applies armor mitigation curves.
+- **HitResolver**: Resolves overlap events between `Hitbox` and `Hurtbox` layers; applies armor mitigation curves and damage profiles.
 - **StaminaSystem**: Costs for attacks/blocks/sprints; guard breaks when stamina is depleted during block.
 - **Knockback & Poise**: Each weapon applies impulse; poise reduces stagger unless broken by heavy attacks.
 
