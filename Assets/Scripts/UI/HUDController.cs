@@ -11,7 +11,9 @@ namespace MountAndBlade2D.UI
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider staminaSlider;
         [SerializeField] private Party.CurrencyWallet wallet;
+        [SerializeField] private Party.MoraleSystem moraleSystem;
         [SerializeField] private TMPro.TMP_Text goldLabel;
+        [SerializeField] private TMPro.TMP_Text moraleLabel;
 
         private void Start()
         {
@@ -28,6 +30,7 @@ namespace MountAndBlade2D.UI
             }
 
             UpdateGold();
+            UpdateMorale();
         }
 
         private void Update()
@@ -43,6 +46,7 @@ namespace MountAndBlade2D.UI
             }
 
             UpdateGold();
+            UpdateMorale();
         }
 
         private void UpdateGold()
@@ -53,6 +57,16 @@ namespace MountAndBlade2D.UI
             }
 
             goldLabel.text = $"Gold: {wallet.Gold}";
+        }
+
+        private void UpdateMorale()
+        {
+            if (moraleSystem == null || moraleLabel == null)
+            {
+                return;
+            }
+
+            moraleLabel.text = $"Morale: {moraleSystem.Morale:0}";
         }
     }
 }

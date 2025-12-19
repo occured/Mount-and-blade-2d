@@ -27,10 +27,10 @@ This repository contains a Unity 6 project setup and design notes for building a
    - A `Grid` with `Tilemap` for terrain.
    - A `Player` prefab with `Rigidbody2D`, `Collider2D`, `OverworldController`, and optional `OverworldInputReader` (wire an Input Action named `Move`).
    - A `GameManager` prefab with `GameClock` and `EventBus` components.
-6. Add a `PartyManager` prefab with `PartyRoster`, `MoraleSystem`, and `CurrencyWallet`; wire UI to `RecruitmentPanel` and `HUDController` (gold label).
+6. Add a `PartyManager` prefab with `PartyRoster`, `MoraleSystem`, `CurrencyWallet`, and `PartyWageSystem`; wire UI to `RecruitmentPanel` and `HUDController` (gold + morale labels).
 7. For combat sandboxes, create a scene with two fighters each having `CombatStateMachine`, `CombatInputController` (or `CombatAIController` for enemies), `HealthComponent`, `StaminaComponent`, and `HitResolver` paired with `Hitbox` on weapon hitboxes (and `Hurtbox` on the body).
 8. Add an `EncounterSpawner` to the overworld to spawn roaming parties from an `EncounterTable`.
-9. Optional: add a `GameState` + `SaveSystem` object to persist party roster and gold (uses Unity Editor asset GUIDs).
+9. Optional: add a `GameState` + `SaveSystem` object to persist party roster, gold, morale, and clock ticks (uses Unity Editor asset GUIDs).
 
 ## Immediate milestones
 - Overworld movement prototype with camera follow and nav boundaries.

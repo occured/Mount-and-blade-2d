@@ -26,6 +26,8 @@ namespace MountAndBlade2D.Core
             var data = new SaveData
             {
                 gold = gameState.Wallet != null ? gameState.Wallet.Gold : 0,
+                currentTick = gameState.GameClock != null ? gameState.GameClock.CurrentTick : 0,
+                morale = gameState.MoraleSystem != null ? gameState.MoraleSystem.Morale : 0f,
                 roster = SerializeRoster(gameState.PartyRoster)
             };
 
@@ -68,6 +70,16 @@ namespace MountAndBlade2D.Core
 
             var members = DeserializeRoster(data.roster);
             gameState.SetRoster(members);
+
+            if (gameState.MoraleSystem != null)
+            {
+                gameState.MoraleSystem.SetMorale(data.morale);
+            }
+
+            if (gameState.GameClock != null)
+            {
+                gameState.GameClock.SetTick(data.currentTick);
+            }
         }
 
         private string GetSavePath()

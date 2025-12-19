@@ -16,6 +16,8 @@ namespace MountAndBlade2D.Core
 
         public event Action<int> OnTick;
         public event Action<int> OnNewDay;
+        public int CurrentTick => _currentTick;
+        public int CurrentDay => ticksPerDay > 0 ? _currentTick / ticksPerDay : 0;
 
         private void Update()
         {
@@ -36,6 +38,11 @@ namespace MountAndBlade2D.Core
             {
                 OnNewDay?.Invoke(_currentTick / ticksPerDay);
             }
+        }
+
+        public void SetTick(int tick)
+        {
+            _currentTick = Mathf.Max(0, tick);
         }
     }
 }

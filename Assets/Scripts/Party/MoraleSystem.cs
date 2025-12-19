@@ -40,5 +40,10 @@ namespace MountAndBlade2D.Party
         {
             morale = Mathf.Clamp(morale - starvationPenaltyPerDay, 0f, 100f);
         }
+
+        public void SetMorale(float value)
+        {
+            morale = Mathf.Clamp(value, 0f, 100f);
+        }
     }
 }

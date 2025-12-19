@@ -8,6 +8,8 @@ namespace MountAndBlade2D.Core
     public class SaveData
     {
         public int gold;
+        public int currentTick;
+        public float morale;
         public List<SerializableRosterEntry> roster = new();
     }
 

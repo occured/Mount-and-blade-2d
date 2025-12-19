@@ -21,6 +21,7 @@
 - **MoraleSystem**: Derived from recent victories, wages paid, food status, and leadership perks.
 - **StaminaComponent**: Spends stamina on attacks/blocks/sprints and regenerates over time; exhausted window prevents spending.
 - **CurrencyWallet**: Tracks party gold and supports spend/add operations.
+- **PartyWageSystem**: Pays daily wages on `GameClock` ticks and updates morale based on success.
 
 ### Combat
 - **CombatStateMachine**: Handles states: Idle → Windup → Active → Recover → Cooldown. Supports queued feints and chamber blocks.

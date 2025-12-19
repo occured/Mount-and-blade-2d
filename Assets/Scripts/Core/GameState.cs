@@ -14,6 +14,8 @@ namespace MountAndBlade2D.Core
 
         [SerializeField] private PartyRoster partyRoster;
         [SerializeField] private CurrencyWallet wallet;
+        [SerializeField] private Party.MoraleSystem moraleSystem;
+        [SerializeField] private GameClock gameClock;
 
         private void Awake()
         {
@@ -29,6 +31,8 @@ namespace MountAndBlade2D.Core
 
         public PartyRoster PartyRoster => partyRoster;
         public CurrencyWallet Wallet => wallet;
+        public Party.MoraleSystem MoraleSystem => moraleSystem;
+        public GameClock GameClock => gameClock;
 
         public void SetRoster(List<CharacterStats> members)
         {

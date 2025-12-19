@@ -36,12 +36,19 @@ namespace MountAndBlade2D.UI
             {
                 var button = Instantiate(recruitButtonPrefab, contentRoot);
                 var label = button.GetComponentInChildren<TMPro.TMP_Text>();
+                var cost = recruit.cost;
+                if (cost <= 0 && recruit.troopData != null)
+                {
+                    cost = recruit.troopData.recruitCost;
+                }
                 if (label != null)
                 {
-                    label.text = $"{recruit.stats.name} — Cost: {recruit.cost} — Wage: {recruit.stats.wage}";
+                    label.text = $"{recruit.stats.name} — Cost: {cost} — Wage: {recruit.stats.wage}";
                 }
 
-                button.onClick.AddListener(() => AttemptRecruit(recruit));
+                var option = recruit;
+                option.cost = cost;
+                button.onClick.AddListener(() => AttemptRecruit(option));
             }
         }
 
