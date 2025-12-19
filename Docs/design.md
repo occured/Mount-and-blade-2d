@@ -27,6 +27,7 @@
 - **HitResolver**: Resolves overlap events between `Hitbox` and `Hurtbox` layers; applies armor mitigation curves and damage profiles.
 - **Hitbox**: Weapon trigger collider that forwards overlaps to `HitResolver`.
 - **CombatInputController**: Maps input actions (or legacy input) to start attacks.
+- **CombatAIController**: Simple AI that attacks and blocks based on distance and timers.
 - **CombatData**: ScriptableObject that stores combat timing and stamina costs.
 - **Hurtbox**: Marker for body colliders that should receive damage.
 - **StaminaSystem**: Costs for attacks/blocks/sprints; guard breaks when stamina is depleted during block.

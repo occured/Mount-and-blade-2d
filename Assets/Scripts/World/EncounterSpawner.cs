@@ -33,17 +33,27 @@ namespace MountAndBlade2D.World
             if (_timer >= spawnIntervalSeconds)
             {
                 _timer = 0f;
-                SpawnParty();
+                SpawnWave();
             }
         }
 
-        private void SpawnParty()
+        private void SpawnWave()
         {
             if (encounterTable.entries.Count == 0)
             {
                 return;
             }
 
+            var spawnCount = Random.Range(encounterTable.minSpawnCount, encounterTable.maxSpawnCount + 1);
+            spawnCount = Mathf.Min(spawnCount, maxActiveParties - _activeCount);
+            for (var i = 0; i < spawnCount; i++)
+            {
+                SpawnParty();
+            }
+        }
+
+        private void SpawnParty()
+        {
             var entry = SelectEntry();
             var spawnPosition = transform.position + new Vector3(
                 Random.Range(-spawnRadius.x, spawnRadius.x),

@@ -12,6 +12,8 @@ namespace MountAndBlade2D.Combat
     {
         [SerializeField] private float blockReduction = 0.5f;
         [SerializeField] private bool useLegacyInput = true;
+        [SerializeField] private float staminaCostPerSecond = 8f;
+        [SerializeField] private Character.StaminaComponent stamina;
 
         private bool _isBlocking;
 
@@ -33,6 +35,35 @@ namespace MountAndBlade2D.Combat
             }
 
             _isBlocking = Input.GetButton("Fire2");
+            DrainStamina();
+        }
+
+        private void LateUpdate()
+        {
+            if (!useLegacyInput)
+            {
+                DrainStamina();
+            }
+        }
+
+        public void SetBlocking(bool blocking)
+        {
+            _isBlocking = blocking;
+        }
+
+        public void SetUseLegacyInput(bool enabled)
+        {
+            useLegacyInput = enabled;
+        }
+
+        private void DrainStamina()
+        {
+            if (!_isBlocking || stamina == null)
+            {
+                return;
+            }
+
+            stamina.TrySpend(staminaCostPerSecond * Time.deltaTime);
         }
     }
 }
