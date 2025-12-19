@@ -55,6 +55,12 @@ namespace MountAndBlade2D.World
             {
                 instance.name = $"{entry.faction.factionName} Party";
             }
+
+            var encounterParty = instance.GetComponent<EncounterParty>();
+            if (encounterParty != null)
+            {
+                encounterParty.Configure(entry);
+            }
             _activeCount++;
             instance.gameObject.AddComponent<PartyLifetime>().Init(() => _activeCount--);
         }

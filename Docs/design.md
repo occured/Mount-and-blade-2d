@@ -13,6 +13,7 @@
 - **SettlementNode**: Holds recruit pools, vendors, and relations. Provides interaction prompts.
 - **PartyAIController**: Governs roaming parties (bandits, caravans) with states: idle, patrol, chase, flee.
 - **EncounterSpawner**: Periodically spawns roaming parties using `EncounterTable`.
+- **OverworldEncounterTrigger**: Switches to combat scenes when the player touches an encounter.
 
 ### Characters & parties
 - **CharacterStats**: Encapsulates health, stamina, armor, damage, and a `DamageProfile` (slash/pierce/blunt).
@@ -26,6 +27,7 @@
 - **HitResolver**: Resolves overlap events between `Hitbox` and `Hurtbox` layers; applies armor mitigation curves and damage profiles.
 - **Hitbox**: Weapon trigger collider that forwards overlaps to `HitResolver`.
 - **CombatInputController**: Maps input actions (or legacy input) to start attacks.
+- **CombatData**: ScriptableObject that stores combat timing and stamina costs.
 - **Hurtbox**: Marker for body colliders that should receive damage.
 - **StaminaSystem**: Costs for attacks/blocks/sprints; guard breaks when stamina is depleted during block.
 - **Knockback & Poise**: Each weapon applies impulse; poise reduces stagger unless broken by heavy attacks.

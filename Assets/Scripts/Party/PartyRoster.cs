@@ -31,6 +31,11 @@ namespace MountAndBlade2D.Party
             members.Remove(character);
         }
 
+        public void Clear()
+        {
+            members.Clear();
+        }
+
         public int CalculateDailyWages()
         {
             var total = 0;

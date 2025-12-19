@@ -16,6 +16,7 @@ namespace MountAndBlade2D.Combat
     /// </summary>
     public class CombatStateMachine : MonoBehaviour
     {
+        [SerializeField] private CombatData combatData;
         [SerializeField] private float windupDuration = 0.2f;
         [SerializeField] private float activeDuration = 0.15f;
         [SerializeField] private float recoverDuration = 0.3f;
@@ -52,11 +53,13 @@ namespace MountAndBlade2D.Combat
                 return;
             }
 
-            if (stamina != null && !stamina.TrySpend(staminaCost))
+            var cost = combatData != null ? combatData.staminaCost : staminaCost;
+            if (stamina != null && !stamina.TrySpend(cost))
             {
                 return;
             }
 
+            ApplyCombatData();
             _direction = direction;
             _state = CombatState.Windup;
             _timer = windupDuration;
@@ -89,6 +92,20 @@ namespace MountAndBlade2D.Combat
                     OnStateChanged?.Invoke(_state);
                     break;
             }
+        }
+
+        private void ApplyCombatData()
+        {
+            if (combatData == null)
+            {
+                return;
+            }
+
+            windupDuration = combatData.windupDuration;
+            activeDuration = combatData.activeDuration;
+            recoverDuration = combatData.recoverDuration;
+            cooldownDuration = combatData.cooldownDuration;
+            staminaCost = combatData.staminaCost;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace MountAndBlade2D.Combat
         [SerializeField] private float baseDamage = 10f;
         [SerializeField] private DamageType damageType = DamageType.Slash;
         [SerializeField] private DamageProfile damageProfile;
+        [SerializeField] private bool allowBlocking = true;
 
         public void Resolve(Collider2D collider)
         {
@@ -29,6 +30,15 @@ namespace MountAndBlade2D.Combat
                     if (stats != null)
                     {
                         damage = stats.GetMitigatedDamage(damage);
+                    }
+
+                    if (allowBlocking)
+                    {
+                        var block = collider.GetComponent<BlockController>();
+                        if (block != null && block.IsBlocking)
+                        {
+                            damage *= Mathf.Clamp01(1f - block.BlockReduction);
+                        }
                     }
                     health.TakeDamage(damage);
                 }
