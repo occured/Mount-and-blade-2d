@@ -10,6 +10,8 @@ namespace MountAndBlade2D.UI
         [SerializeField] private StaminaComponent playerStamina;
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider staminaSlider;
+        [SerializeField] private Party.CurrencyWallet wallet;
+        [SerializeField] private TMPro.TMP_Text goldLabel;
 
         private void Start()
         {
@@ -24,6 +26,8 @@ namespace MountAndBlade2D.UI
                 staminaSlider.maxValue = playerStamina.Max;
                 staminaSlider.value = playerStamina.Current;
             }
+
+            UpdateGold();
         }
 
         private void Update()
@@ -37,6 +41,18 @@ namespace MountAndBlade2D.UI
             {
                 staminaSlider.value = playerStamina.Current;
             }
+
+            UpdateGold();
+        }
+
+        private void UpdateGold()
+        {
+            if (wallet == null || goldLabel == null)
+            {
+                return;
+            }
+
+            goldLabel.text = $"Gold: {wallet.Gold}";
         }
     }
 }

@@ -8,6 +8,8 @@ namespace MountAndBlade2D.ScriptableObjects
     public class EncounterTable : ScriptableObject
     {
         public List<Entry> entries = new();
+        public int minSpawnCount = 1;
+        public int maxSpawnCount = 3;
 
         [Serializable]
         public struct Entry

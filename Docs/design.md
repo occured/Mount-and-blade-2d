@@ -12,12 +12,14 @@
 - **EventBus**: Lightweight pub/sub for decoupling UI, world events, and combat triggers.
 - **SettlementNode**: Holds recruit pools, vendors, and relations. Provides interaction prompts.
 - **PartyAIController**: Governs roaming parties (bandits, caravans) with states: idle, patrol, chase, flee.
+- **EncounterSpawner**: Periodically spawns roaming parties using `EncounterTable`.
 
 ### Characters & parties
 - **CharacterStats**: Encapsulates health, stamina, armor, damage, and a `DamageProfile` (slash/pierce/blunt).
 - **PartyRoster**: List of units with wages, morale, and formation role (frontline/ranged/cavalry-equivalent).
 - **MoraleSystem**: Derived from recent victories, wages paid, food status, and leadership perks.
 - **StaminaComponent**: Spends stamina on attacks/blocks/sprints and regenerates over time; exhausted window prevents spending.
+- **CurrencyWallet**: Tracks party gold and supports spend/add operations.
 
 ### Combat
 - **CombatStateMachine**: Handles states: Idle → Windup → Active → Recover → Cooldown. Supports queued feints and chamber blocks.

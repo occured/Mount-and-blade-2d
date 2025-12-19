@@ -9,6 +9,7 @@ namespace MountAndBlade2D.ScriptableObjects
         public string troopName = "Militia";
         public CharacterStats baseStats;
         public WeaponData primaryWeapon;
+        public int recruitCost = 25;
         public int upgradeCost = 50;
         public TroopData upgradeTarget;
     }

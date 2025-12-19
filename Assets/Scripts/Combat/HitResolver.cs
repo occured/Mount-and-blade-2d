@@ -18,12 +18,18 @@ namespace MountAndBlade2D.Combat
         {
             if (IsInLayerMask(collider.gameObject, hurtboxMask))
             {
-                var health = collider.GetComponent<IHealth>();
+                var healthComponent = collider.GetComponent<MountAndBlade2D.Character.HealthComponent>();
+                var health = healthComponent as IHealth ?? collider.GetComponent<IHealth>();
                 if (health != null)
                 {
                     var damage = damageProfile != null
                         ? damageProfile.Evaluate(damageType, baseDamage)
                         : baseDamage;
+                    var stats = healthComponent != null ? healthComponent.Stats : null;
+                    if (stats != null)
+                    {
+                        damage = stats.GetMitigatedDamage(damage);
+                    }
                     health.TakeDamage(damage);
                 }
             }

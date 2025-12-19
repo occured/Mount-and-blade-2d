@@ -5,9 +5,11 @@ namespace MountAndBlade2D.Character
     public class HealthComponent : MonoBehaviour, IHealth
     {
         [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private CharacterStats stats;
         private float _currentHealth;
 
         public float CurrentHealth => _currentHealth;
+        public CharacterStats Stats => stats;
 
         private void Awake()
         {
@@ -16,7 +18,8 @@ namespace MountAndBlade2D.Character
 
         public void TakeDamage(float amount)
         {
-            _currentHealth = Mathf.Max(0f, _currentHealth - amount);
+            var finalAmount = stats != null ? stats.GetMitigatedDamage(amount) : amount;
+            _currentHealth = Mathf.Max(0f, _currentHealth - finalAmount);
             if (_currentHealth <= 0f)
             {
                 OnDeath();
