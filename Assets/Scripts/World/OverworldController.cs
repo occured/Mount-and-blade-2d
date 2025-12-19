@@ -12,6 +12,7 @@ namespace MountAndBlade2D.World
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private Camera targetCamera;
         [SerializeField] private EventBus eventBus;
+        [SerializeField] private OverworldInputReader inputReader;
 
         private Rigidbody2D _rb;
         private Vector2 _input;
@@ -23,7 +24,14 @@ namespace MountAndBlade2D.World
 
         private void Update()
         {
-            _input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (inputReader != null)
+            {
+                _input = inputReader.MoveInput;
+            }
+            else
+            {
+                _input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            }
         }
 
         private void FixedUpdate()

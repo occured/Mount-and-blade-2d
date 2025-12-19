@@ -25,10 +25,10 @@ This repository contains a Unity 6 project setup and design notes for building a
 4. Create URP renderer features for 2D lighting if you plan to use day/night cues.
 5. Add an empty scene `Scenes/Overworld` with:
    - A `Grid` with `Tilemap` for terrain.
-   - A `Player` prefab with `Rigidbody2D`, `Collider2D`, and the `OverworldController`.
+   - A `Player` prefab with `Rigidbody2D`, `Collider2D`, `OverworldController`, and optional `OverworldInputReader` (wire an Input Action named `Move`).
    - A `GameManager` prefab with `GameClock` and `EventBus` components.
 6. Add a `PartyManager` prefab with `PartyRoster` + `MoraleSystem`; wire UI to `RecruitmentPanel`.
-7. For combat sandboxes, create a scene with two fighters each having `CombatStateMachine`, `HealthComponent`, `StaminaComponent`, and `HitResolver` on weapon hitboxes.
+7. For combat sandboxes, create a scene with two fighters each having `CombatStateMachine`, `HealthComponent`, `StaminaComponent`, and `HitResolver` paired with `Hitbox` on weapon hitboxes.
 
 ## Immediate milestones
 - Overworld movement prototype with camera follow and nav boundaries.

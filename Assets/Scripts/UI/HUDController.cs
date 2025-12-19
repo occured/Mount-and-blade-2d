@@ -7,6 +7,7 @@ namespace MountAndBlade2D.UI
     public class HUDController : MonoBehaviour
     {
         [SerializeField] private HealthComponent playerHealth;
+        [SerializeField] private StaminaComponent playerStamina;
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider staminaSlider;
 
@@ -17,6 +18,12 @@ namespace MountAndBlade2D.UI
                 healthSlider.maxValue = playerHealth.CurrentHealth;
                 healthSlider.value = playerHealth.CurrentHealth;
             }
+
+            if (playerStamina != null && staminaSlider != null)
+            {
+                staminaSlider.maxValue = playerStamina.Max;
+                staminaSlider.value = playerStamina.Current;
+            }
         }
 
         private void Update()
@@ -26,11 +33,9 @@ namespace MountAndBlade2D.UI
                 healthSlider.value = playerHealth.CurrentHealth;
             }
 
-            // Placeholder stamina binding; hook up to a stamina component once available.
-            if (staminaSlider != null && staminaSlider.maxValue <= 0f)
+            if (playerStamina != null && staminaSlider != null)
             {
-                staminaSlider.maxValue = 100f;
-                staminaSlider.value = 100f;
+                staminaSlider.value = playerStamina.Current;
             }
         }
     }
