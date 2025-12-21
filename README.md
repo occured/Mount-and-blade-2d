@@ -36,6 +36,8 @@ This repository contains a Unity 6 project setup and design notes for building a
 12. Create an Input Actions asset (see `Assets/Settings/InputActions.inputactions`) and assign it to `PlayerInput` (or use `PlayerInputBinder`) to drive `Move`, `Attack`, `Block`, and `Sprint`.
 13. Optional: add `OverworldBounds`, `OverworldCameraFollow`, and `SprintController` to polish travel movement.
 
+For a full end-to-end setup walkthrough, see `Docs/setup.md`.
+
 ## Immediate milestones
 - Overworld movement prototype with camera follow and nav boundaries.
 - Basic combat arena scene with two units, directional attack/block, and stamina drain.
