@@ -1,0 +1,132 @@
+{
+  "name": "PlayerInputActions",
+  "maps": [
+    {
+      "name": "Gameplay",
+      "id": "3c2d9369-2c7c-43b2-9a11-76e4b52c21a5",
+      "actions": [
+        {
+          "name": "Move",
+          "type": "Value",
+          "id": "1f3d8f36-0a47-4a5b-9b17-1c20c5bf42d2",
+          "expectedControlType": "Vector2"
+        },
+        {
+          "name": "Attack",
+          "type": "Button",
+          "id": "65d5f8f0-7f74-47fd-a16f-9fe7d0e1e90c",
+          "expectedControlType": "Button"
+        },
+        {
+          "name": "Block",
+          "type": "Button",
+          "id": "e502a3b5-311a-4b3a-8072-d2ad1a5632a5",
+          "expectedControlType": "Button"
+        },
+        {
+          "name": "Sprint",
+          "type": "Button",
+          "id": "92b8d2e6-1b2a-4c3c-9c95-9f3a0e0f3d6b",
+          "expectedControlType": "Button"
+        }
+      ],
+      "bindings": [
+        {
+          "name": "WASD",
+          "id": "56c0e9a3-9d1c-4f43-97a8-cc7a9b3e7d50",
+          "path": "2DVector",
+          "action": "Move",
+          "isComposite": true
+        },
+        {
+          "name": "up",
+          "id": "2fbd49c7-0c9c-4d1e-8898-7c88bd9a4e43",
+          "path": "<Keyboard>/w",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "down",
+          "id": "c37fc744-3a75-44d2-b283-8f4d2a7e8b39",
+          "path": "<Keyboard>/s",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "left",
+          "id": "b3c0469a-1c21-4c5a-8b66-3a2b0d6f1e55",
+          "path": "<Keyboard>/a",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "right",
+          "id": "1c8a9e8e-7f3a-4a5b-9c8e-72c1b8762e33",
+          "path": "<Keyboard>/d",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "ArrowKeys",
+          "id": "b579a5ef-5c3b-4cb3-8b2e-8e9c7f2a18d7",
+          "path": "2DVector",
+          "action": "Move",
+          "isComposite": true
+        },
+        {
+          "name": "up",
+          "id": "2814f4b4-0f1a-4e25-9ee8-40f2e8c5d91f",
+          "path": "<Keyboard>/upArrow",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "down",
+          "id": "5b1f92f0-9b5c-48e2-9c77-2b6f5b06f7fd",
+          "path": "<Keyboard>/downArrow",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "left",
+          "id": "e68f5ad0-9d19-4a76-9e03-3c2f1a35f8e1",
+          "path": "<Keyboard>/leftArrow",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "right",
+          "id": "c2dbeafd-0432-4bf4-8b2c-598a49d437cb",
+          "path": "<Keyboard>/rightArrow",
+          "action": "Move",
+          "isPartOfComposite": true
+        },
+        {
+          "name": "Attack",
+          "id": "c99c7c08-67c5-4b40-a6c2-1e4c1f4f5f85",
+          "path": "<Mouse>/leftButton",
+          "action": "Attack"
+        },
+        {
+          "name": "Attack",
+          "id": "5f9d15a2-8f5a-4d8b-87cb-4cb7b10f6c2c",
+          "path": "<Keyboard>/space",
+          "action": "Attack"
+        },
+        {
+          "name": "Block",
+          "id": "3c5c0f8b-8c36-4c64-9e03-9f5f39e8adab",
+          "path": "<Mouse>/rightButton",
+          "action": "Block"
+        },
+        {
+          "name": "Sprint",
+          "id": "d8872b90-9780-4fa3-9a4d-55a7c3e77f58",
+          "path": "<Keyboard>/leftShift",
+          "action": "Sprint"
+        }
+      ]
+    }
+  ],
+  "controlSchemes": []
+}
