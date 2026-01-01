@@ -5,12 +5,16 @@ namespace MountAndBlade2D.Character
 {
     public class HealthComponent : MonoBehaviour, IHealth
     {
+        public static event Action<HealthComponent> OnAnyDeath;
+
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private CharacterStats stats;
+        [SerializeField] private ScriptableObjects.FactionData ownerFaction;
         private float _currentHealth;
 
         public float CurrentHealth => _currentHealth;
         public CharacterStats Stats => stats;
+        public ScriptableObjects.FactionData OwnerFaction => ownerFaction;
         public event Action<HealthComponent> Died;
 
         private void Awake()
@@ -28,6 +32,11 @@ namespace MountAndBlade2D.Character
             }
         }
 
+        public void SetFaction(ScriptableObjects.FactionData faction)
+        {
+            ownerFaction = faction;
+        }
+
         public void TakeDamage(float amount)
         {
             var finalAmount = stats != null ? stats.GetMitigatedDamage(amount) : amount;
@@ -42,6 +51,7 @@ namespace MountAndBlade2D.Character
         {
             // Placeholder hook for death handling; override or subscribe externally.
             Died?.Invoke(this);
+            OnAnyDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
     }

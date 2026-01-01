@@ -21,7 +21,10 @@
 - **CombatRewardOnDeath**: Grants gold/renown/morale on kills.
 - **QuestGiver**: Grants quests when the player interacts with a trigger.
 - **PlayerInputBinder**: Assigns an InputActionAsset to PlayerInput at runtime.
-- **CombatResolution**: Detects victory, awards XP, and returns to overworld.
+- **CombatResolution**: Detects victory, awards XP, and returns to overworld (emits victory/defeat events).
+- **CombatResultUI**: Shows victory UI and delays return to overworld.
+- **CombatDefeatUI**: Shows defeat UI and delays return to overworld.
+- **QuestCompletionTrigger**: Completes quests when the player enters a trigger.
 
 ### Characters & parties
 - **CharacterStats**: Encapsulates health, stamina, armor, damage, and a `DamageProfile` (slash/pierce/blunt).
@@ -37,11 +40,13 @@
 - **PartyTravelSpeed**: Computes travel speed modifiers based on morale and supplies.
 - **QuestLog**: Tracks active and completed quests.
 - **ReputationSystem**: Tracks relations with factions.
+- **ReputationSerializer**: Saves and restores faction relations.
 - **RenownSystem**: Tracks party renown from victories and quests.
 - **PartyCapacity**: Computes max party size from renown and morale.
 - **PartyCapacityUpdater**: Recalculates capacity on daily ticks.
 - **TroopUpgradeSystem**: Upgrades troops using `TroopData` and party currency.
 - **PartyTroopProgression**: Awards XP to troops and triggers upgrades.
+- **KillQuestTracker**: Tracks kill objectives for quests and completes them.
 
 ### Combat
 - **CombatStateMachine**: Handles states: Idle → Windup → Active → Recover → Cooldown. Supports queued feints and chamber blocks.
@@ -64,6 +69,7 @@
 - **VendorPanel**: Buy/sell items using `CurrencyWallet` and `PartyInventory`.
 - **PartyInventoryPanel**: Lists current party items.
 - **QuestLogPanel**: Lists active quests.
+- **SaveLoadPanel**: Buttons to save/load game state.
 - **TroopUpgradePanel**: Displays upgrade options for troops.
 
 ## Content data (ScriptableObjects)

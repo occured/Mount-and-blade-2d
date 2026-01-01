@@ -18,6 +18,7 @@ namespace MountAndBlade2D.Core
         [SerializeField] private ScriptableObjects.CharacterRegistry characterRegistry;
         [SerializeField] private ScriptableObjects.ItemRegistry itemRegistry;
         [SerializeField] private ScriptableObjects.QuestRegistry questRegistry;
+        [SerializeField] private List<ScriptableObjects.FactionData> factionCatalog = new();
 
         public void Save()
         {
@@ -36,7 +37,8 @@ namespace MountAndBlade2D.Core
                 inventory = SerializeInventory(gameState.PartyInventory),
                 roster = SerializeRoster(gameState.PartyRoster),
                 activeQuests = SerializeQuests(gameState.QuestLog, completed: false),
-                completedQuests = SerializeQuests(gameState.QuestLog, completed: true)
+                completedQuests = SerializeQuests(gameState.QuestLog, completed: true),
+                reputation = Party.ReputationSerializer.Serialize(gameState.ReputationSystem)
             };
 
             var json = JsonUtility.ToJson(data, true);
@@ -117,6 +119,11 @@ namespace MountAndBlade2D.Core
                 gameState.QuestLog.Clear();
                 LoadQuestList(data.activeQuests, completed: false);
                 LoadQuestList(data.completedQuests, completed: true);
+            }
+
+            if (gameState.ReputationSystem != null && factionCatalog != null)
+            {
+                Party.ReputationSerializer.Deserialize(gameState.ReputationSystem, data.reputation, factionCatalog);
             }
         }
 

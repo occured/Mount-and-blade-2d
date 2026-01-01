@@ -10,5 +10,8 @@ namespace MountAndBlade2D.ScriptableObjects
         [TextArea] public string description;
         public int goldReward = 50;
         public int moraleReward = 5;
+        [Header("Objectives (optional)")]
+        public FactionData targetFaction;
+        public int killsRequired = 0;
     }
 }

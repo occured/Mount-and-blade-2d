@@ -48,6 +48,12 @@ namespace MountAndBlade2D.Party
             reputations.Add(new FactionReputation(faction, delta));
         }
 
+        public IReadOnlyList<FactionReputation> Reputations => reputations;
+
+        public void Clear()
+        {
+            reputations.Clear();
+        }
         [System.Serializable]
         public struct FactionReputation
         {

@@ -29,7 +29,7 @@ This repository contains a Unity 6 project setup and design notes for building a
    - A `GameManager` prefab with `GameClock` and `EventBus` components.
 6. Add a `PartyManager` prefab with `PartyRoster`, `PartyInventory`, `MoraleSystem`, `CurrencyWallet`, `FoodInventory`, `PartyWageSystem`, `PartyFoodSystem`, `PartyTravelSpeed`, `QuestLog`, `ReputationSystem`, `RenownSystem`, `PartyCapacity`, `PartyCapacityUpdater`, `TroopUpgradeSystem`, and `PartyTroopProgression`; wire UI to `RecruitmentPanel`, `HUDController` (gold + morale + food + renown labels), `PartyInventoryPanel`, `QuestLogPanel`, `TroopUpgradePanel`, and optional `VendorPanel`.
 7. For combat sandboxes, create a scene with two fighters each having `CombatStateMachine`, `CombatInputController` (or `CombatAIController` for enemies), `HealthComponent`, `StaminaComponent`, `BlockController`, `CombatAnimationDriver`, and `HitResolver` paired with `Hitbox` + `HitboxDirectionalOffsets` on weapon hitboxes (and `Hurtbox` on the body).
-8. Add `CombatSceneBootstrap` and `CombatResolution` to the combat scene, assign enemy + ally prefabs and spawn roots to instantiate combatants from the last encounter and return to overworld.
+8. Add `CombatSceneBootstrap`, `CombatResolution`, and optional `CombatResultUI`/`CombatDefeatUI` to the combat scene, assign enemy + ally prefabs and spawn roots to instantiate combatants from the last encounter and return to overworld.
 9. Add an `EncounterSpawner` to the overworld to spawn roaming parties from an `EncounterTable`, and place an `OverworldEncounterTrigger`, `LootDropper`, and `CombatRewardOnDeath` on each encounter prefab.
 10. Optional: add a `GameState` + `SaveSystem` object to persist party roster, gold, morale, food, inventory, and clock ticks (uses Character IDs in builds and GUIDs in the editor).
 11. Create `ItemData`, `ItemRegistry`, `QuestData`, `QuestRegistry`, `TroopRegistry`, and `LootTable` assets to support inventory, vendors, pickups, quests, and drops.
@@ -37,6 +37,7 @@ This repository contains a Unity 6 project setup and design notes for building a
 13. Optional: add `OverworldBounds`, `OverworldCameraFollow`, and `SprintController` to polish travel movement.
 
 For a full end-to-end setup walkthrough, see `Docs/setup.md`.
+For combat animation wiring, see `Docs/animation.md`.
 
 ## Immediate milestones
 - Overworld movement prototype with camera follow and nav boundaries.

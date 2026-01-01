@@ -14,6 +14,8 @@ namespace MountAndBlade2D.Combat
         [SerializeField] private GameObject allyPrefab;
         [SerializeField] private int fallbackEnemyCount = 2;
 
+        private CombatResolution _resolution;
+
         private void Start()
         {
             if (enemyPrefab == null || enemySpawnRoot == null)
@@ -22,6 +24,7 @@ namespace MountAndBlade2D.Combat
                 return;
             }
 
+            _resolution = FindObjectOfType<CombatResolution>();
             SpawnAllies();
             var roster = EncounterContext.EnemyRoster;
             if (roster.Count == 0)
@@ -59,6 +62,12 @@ namespace MountAndBlade2D.Combat
                 {
                     binder.Apply(member);
                 }
+
+                var health = instance.GetComponent<Character.HealthComponent>();
+                if (_resolution != null && health != null)
+                {
+                    _resolution.RegisterAlly(health);
+                }
                 index++;
             }
         }
@@ -69,7 +78,8 @@ namespace MountAndBlade2D.Combat
             for (var i = 0; i < count; i++)
             {
                 var offset = new Vector3(i * 1.5f, 0f, 0f);
-                Instantiate(enemyPrefab, enemySpawnRoot.position + offset, Quaternion.identity, enemySpawnRoot);
+                var instance = Instantiate(enemyPrefab, enemySpawnRoot.position + offset, Quaternion.identity, enemySpawnRoot);
+                RegisterEnemy(instance);
             }
         }
 
@@ -85,12 +95,20 @@ namespace MountAndBlade2D.Combat
                     binder.Apply(roster[i]);
                 }
 
-                var resolver = FindObjectOfType<World.CombatResolution>();
-                if (resolver != null)
+                RegisterEnemy(instance);
+            }
+        }
+
+        private void RegisterEnemy(GameObject instance)
+        {
+            var health = instance.GetComponent<Character.HealthComponent>();
+            if (health != null)
+            {
+                if (EncounterContext.Faction != null)
                 {
-                    var health = instance.GetComponent<Character.HealthComponent>();
-                    resolver.RegisterEnemy(health);
+                    health.SetFaction(EncounterContext.Faction);
                 }
+                _resolution?.RegisterEnemy(health);
             }
         }
     }
