@@ -16,6 +16,7 @@ namespace MountAndBlade2D.Core
         public List<SerializableRosterEntry> roster = new();
         public List<string> activeQuests = new();
         public List<string> completedQuests = new();
+        public List<Party.ReputationSerializer.ReputationEntry> reputation = new();
     }
 
     [Serializable]

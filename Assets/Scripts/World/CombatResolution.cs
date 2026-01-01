@@ -17,6 +17,8 @@ namespace MountAndBlade2D.World
 
         private int _enemyCount;
 
+        public event System.Action<string> Victory;
+
         public void RegisterEnemy(HealthComponent health)
         {
             if (health == null)
@@ -44,7 +46,7 @@ namespace MountAndBlade2D.World
                 troopProgression.AddXpToRoster(xpPerBattle);
             }
 
-            SceneManager.LoadScene(overworldSceneName);
+            Victory?.Invoke(overworldSceneName);
         }
     }
 }
