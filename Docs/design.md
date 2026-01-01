@@ -21,7 +21,7 @@
 - **CombatRewardOnDeath**: Grants gold/renown/morale on kills.
 - **QuestGiver**: Grants quests when the player interacts with a trigger.
 - **PlayerInputBinder**: Assigns an InputActionAsset to PlayerInput at runtime.
-- **CombatResolution**: Detects victory, awards XP, and returns to overworld (emits victory/defeat events).
+- **CombatResolution**: Detects victory/defeat, awards XP, and returns to overworld (emits victory/defeat events for UI).
 - **CombatResultUI**: Shows victory UI and delays return to overworld.
 - **CombatDefeatUI**: Shows defeat UI and delays return to overworld.
 - **QuestCompletionTrigger**: Completes quests when the player enters a trigger.
